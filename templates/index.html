@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat</title>
+    <link rel="stylesheet" type="text/css" href="/static/style.css">
+</head>
+<body>
+    <div id="username-modal" class="modal">
+        <div class="modal-content">
+            <h2>Enter your username</h2>
+            <p id="username-error" class="error-message"></p>
+            <input id="username-input" type="text" placeholder="Username">
+            <button id="username-submit">Join Chat</button>
+        </div>
+    </div>
+
+    <div class="container">
+        <aside id="sidebar" class="sidebar">
+            <div class="sidebar-header">
+                <!-- Header content, e.g., user profile -->
+            </div>
+            <div class="sidebar-content">
+                <h3>Online Users</h3>
+                <ul id="user-list"></ul>
+            </div>
+            <div class="sidebar-toggle-container">
+                <button id="sidebar-toggle" role="button" aria-expanded="true" aria-controls="sidebar">
+                    <span class="arrow"></span>
+                </button>
+            </div>
+        </aside>
+
+        <main id="chat-area" class="chat-area">
+            <div id="messages-container">
+                <div id="typing-indicator"></div>
+                <ul id="messages">
+                {% for msg in messages %}
+                    <li>
+                        <span class="username">{{ msg[0] }}</span>
+                        <div class="message-body">{{ msg[1] }}</div>
+                        <span class="timestamp">{{ msg[2] }}</span>
+                    </li>
+                {% endfor %}
+                </ul>
+            </div>
+            <form action="">
+                <input id="m" autocomplete="off" /><button>Send</button>
+            </form>
+        </main>
+    </div>
+
+    <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+    <script src="/static/script.js"></script>
+</body>
+</html>
