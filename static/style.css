@@ -264,9 +264,35 @@ button:hover {
 }
 
 #user-list li {
-    padding: 0.5rem 0;
     display: flex;
     align-items: center;
+    padding: 0.5rem;
+    cursor: pointer;
+    border-radius: 0.5rem;
+    transition: background-color 0.2s;
+    position: relative;
+}
+
+#user-list li:hover {
+    background-color: #f0f2f5;
+}
+
+.unread-badge {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #ff3b30;
+    color: white;
+    border-radius: 50%;
+    min-width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 0 4px;
 }
 
 .online-indicator {
@@ -276,6 +302,204 @@ button:hover {
     background-color: #28a745;
     border-radius: 50%;
     margin-right: 8px;
+}
+
+/* Notification Styles */
+.notification {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #f44336; /* Red for errors/rejections */
+    color: white;
+    padding: 16px;
+    border-radius: 5px;
+    z-index: 1001;
+    font-size: 17px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    opacity: 0;
+    transition: opacity 0.5s, top 0.5s;
+}
+
+/* Custom Confirm Modal (for private chat requests) */
+#private-chat-request-modal .modal-content p {
+    margin-bottom: 20px;
+}
+
+#private-chat-request-modal .modal-content button {
+    width: auto;
+    padding: 10px 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1001;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+}
+
+#accept-private-chat {
+    background-color: #007bff; /* Green */
+    color: white;
+    margin-right: 15px; /* Spacing between buttons */
+}
+
+#reject-private-chat {
+    background-color: #f44336; /* Red */
+    color: white;
+}
+
+#custom-confirm-modal .modal-content button {
+    width: auto;
+    padding: 10px 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+}
+
+#confirm-yes {
+    background-color: #007bff;
+    color: white;
+    margin-right: 15px;
+}
+
+#confirm-no {
+    background-color: #f44336;
+    color: white;
+}
+
+
+/* Private Chat Window */
+#private-chat-window {
+    display: none; /* Initially hidden */
+    position: fixed;
+    bottom: 0;
+    right: 20px;
+    width: 320px;
+    height: 420px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px 10px 0 0;
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.15);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+}
+
+#private-chat-header {
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border-bottom: 1px solid #0069d9;
+    cursor: move;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 9px 9px 0 0;
+}
+
+#private-chat-header span {
+    font-weight: 500;
+}
+
+#close-private-chat {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 0 5px;
+    line-height: 1;
+}
+
+#private-messages {
+    list-style-type: none;
+    padding: 15px;
+    margin: 0;
+    flex-grow: 1;
+    overflow-y: auto;
+    background-color: #f9f9f9;
+    display: flex;
+    flex-direction: column;
+}
+
+.private-message-wrapper {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    max-width: 90%;
+}
+
+.private-message-wrapper.sent {
+    align-self: flex-end;
+}
+
+.private-message-wrapper.received {
+    align-self: flex-start;
+}
+
+.private-message-wrapper .timestamp {
+    font-size: 0.75rem;
+    color: #8a8d91;
+    margin-top: 2px;
+}
+
+.private-message-wrapper.sent .timestamp {
+    align-self: flex-end;
+}
+
+.private-message-wrapper.received .timestamp {
+    align-self: flex-start;
+}
+
+.private-message {
+    padding: 8px 12px;
+    border-radius: 15px;
+    word-wrap: break-word;
+    line-height: 1.4;
+    position: relative;
+}
+
+.private-message.sent {
+    background-color: #007bff;
+    color: white;
+    border-bottom-right-radius: 3px;
+}
+
+.private-message.received {
+    background-color: #e9e9eb;
+    color: #000;
+    border-bottom-left-radius: 3px;
+}
+
+#private-chat-form {
+    display: flex;
+    padding: 10px;
+    border-top: 1px solid #ddd;
+    background-color: #fff;
+}
+
+#private-m {
+    flex-grow: 1;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 20px;
+    margin-right: 10px;
+}
+
+#private-chat-form button {
+    border: none;
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#private-chat-form button:hover {
+    background-color: #0056b3;
 }
 
 /* Responsive Design */
@@ -300,5 +524,35 @@ button:hover {
     .sidebar,
     #sidebar-toggle .arrow {
         transition: none;
+    }
+}
+
+/* Notification styles */
+.notification {
+    position: fixed;
+    top: 20px; /* 距离顶部 20px */
+    left: 50%; /* 水平居中 */
+    transform: translateX(-50%); /* 微调以实现精确居中 */
+    background-color: #ff6b6b;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 10000;
+    font-size: 14px;
+    font-weight: 500;
+    max-width: 300px;
+    word-wrap: break-word;
+    animation: slideInDown 3s ease-out;
+}
+
+@keyframes slideInDown {
+   from {
+        transform: translateY(-100%); 
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
     }
 }

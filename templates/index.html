@@ -51,6 +51,33 @@
         </main>
     </div>
 
+    <div id="custom-confirm-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <p id="custom-confirm-text"></p>
+            <button id="confirm-yes" style="margin-right: 15px;">Yes</button>
+            <button id="confirm-no">No</button>
+        </div>
+    </div>
+
+    <div id="private-chat-request-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <p id="private-chat-request-text"></p>
+            <button id="accept-private-chat">Accept</button>
+            <button id="reject-private-chat">Reject</button>
+        </div>
+    </div>
+
+    <div id="private-chat-window" style="display: none;">
+        <div id="private-chat-header">
+            <span id="private-chat-with"></span>
+            <button id="close-private-chat">X</button>
+        </div>
+        <ul id="private-messages"></ul>
+        <form id="private-chat-form">
+            <input id="private-m" autocomplete="off" /><button>Send</button>
+        </form>
+    </div>
+
     <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
     <script src="/static/script.js"></script>
 </body>
