@@ -298,4 +298,4 @@ app.mount('/socket.io', socket_app)
 if __name__ == '__main__':
     init_db()
     # 使用 uvicorn 运行 FastAPI 应用
-    uvicorn.run("app_pastapi:app", host="0.0.0.0", port=5000, reload=True)
+    uvicorn.run("app_fastapi:app", host="0.0.0.0", port=5000, reload=True)
